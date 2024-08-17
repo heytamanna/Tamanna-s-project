@@ -1,5 +1,5 @@
 from django.db import models
-from django.conf import settings  # Import settings to use the custom user model
+from django.conf import settings  
 
 class Blog(models.Model):
     title = models.CharField(max_length=200)
@@ -8,7 +8,7 @@ class Blog(models.Model):
     summary = models.TextField()
     content = models.TextField()
     draft = models.BooleanField(default=False)
-    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  # Update this line
+    author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)  
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

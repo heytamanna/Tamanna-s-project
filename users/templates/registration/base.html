@@ -7,20 +7,20 @@
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
 </head>
-<body>
+<body class="navbarfullbody">
     <header>
         <h1>Tamanna's Project</h1>
         <nav>
             <a href="{% url 'signup' %}" class="nav-link">Sign Up</a>
             <a href="{% url 'login' %}" class="nav-link">Login</a>
-            {% if user.is_authenticated %}
+            
+            {% if user.is_authenticated and not request.path == request.path|slice:':8' %}
                 {% if user.user_type == 'doctor' %}
-                    <a href="{% url 'create_blog' %}" class="nav-link">Create Blog Post</a>
-                    <a href="{% url 'my_blogs' %}" class="nav-link">My Blog Posts</a>
+                    <a href="{% url 'create_blog' %}" class="nav-link doctornav" id="docnav1">Create Blog Post</a>
+                    <a href="{% url 'my_blogs' %}" class="nav-link doctornav" id="docnav2">My Blog Posts</a>
                 {% elif user.user_type == 'patient' %}
                     <a href="{% url 'blog_list' %}" class="nav-link">View All Blogs</a>
                 {% endif %}
-                
             {% endif %}
         </nav>
     </header>
@@ -33,5 +33,3 @@
     </footer>
 </body>
 </html>
-
-

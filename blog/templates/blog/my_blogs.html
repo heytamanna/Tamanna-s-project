@@ -5,7 +5,10 @@
   <ul>
     {% for blog in blogs %}
       <li>
-        <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a> - {{ blog.created_at }}
+        <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a> - {{ blog.created_at|date:"M. d, Y, g:i a" }}
+        {% if blog.draft %}
+          <span style="color: red; font-weight: bold;">Draft</span>
+        {% endif %}
       </li>
     {% empty %}
       <li>No blogs found.</li>

@@ -7,10 +7,10 @@ class CreateBlogView(CreateView):
     model = Blog
     fields = ['title', 'image', 'category', 'summary', 'content', 'draft']
     template_name = 'blog/create_blog.html'
-    success_url = reverse_lazy('blog_list')  # Use reverse_lazy for lazy URL resolution
+    success_url = reverse_lazy('blog_list')  
 
     def form_valid(self, form):
-        form.instance.author = self.request.user  # Set the author to the current user
+        form.instance.author = self.request.user  
         return super().form_valid(form)
 
 class MyBlogsView(ListView):
