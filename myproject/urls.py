@@ -24,6 +24,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', lambda request: redirect('signup/', permanent=True)),  
     path('accounts/', include('django.contrib.auth.urls')),
+    path('blogs/', include('blog.urls')),
     path('', include('users.urls')), 
 ]
 

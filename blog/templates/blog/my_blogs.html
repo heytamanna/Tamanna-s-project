@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>My Blogs</h2>
+  <ul>
+    {% for blog in blogs %}
+      <li>
+        <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a> - {{ blog.created_at }}
+      </li>
+    {% empty %}
+      <li>No blogs found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

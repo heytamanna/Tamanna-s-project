@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Blog List</h2>
+  <ul>
+    {% for blog in blogs %}
+      <li>
+        <a href="{% url 'blog_detail' blog.id %}">{{ blog.title }}</a> - {{ blog.created_at }}
+        <p>{{ blog.summary|slice:":15" }}{% if blog.summary|length > 15 %}...{% endif %}</p>
+      </li>
+    {% empty %}
+      <li>No blogs available.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
